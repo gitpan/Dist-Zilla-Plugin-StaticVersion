@@ -1,12 +1,16 @@
 NAME
-    Dist::Zilla::Plugin::StaticVersion - Specify version number manually.
+    Dist::Zilla::Plugin::StaticVersion - Specify version number manually,
+    using a plugin
 
 VERSION
-    version 0.103440
+    version 0.103521
 
 SYNOPSIS
     In a plugin bundle:
 
+        package Dist::Zilla::PluginBundle::SomePlugins;
+        use Moose;
+        with 'Dist::Zilla::Role::PluginBundle::Easy';
         sub configure {
             ...
             $self->add_plugins(
@@ -20,14 +24,23 @@ SYNOPSIS
         [StaticVersion]
         version = 1.14.3
 
+    which is equivalent to:
+
+        version = 1.14.3
+
 DESCRIPTION
     This purpose of this plugin is to allow plugin bundles or other such
-    things to specify a version number manually. You shouldn't need to use
-    it in your dist.ini.
+    things to specify a specific version number. This allows one to write a
+    pluginbundle that decides based on its configuration whether to offer a
+    specific version number. You could not otherwise do this, because a
+    static version number is specified before any plugins in dist.ini.
+
+    You shouldn't need to use this plugin directly in your dist.ini.
 
 METHODS
   provide_version
-    This method simply offers the specified version.
+    This method simply offers the specified version. If the specified
+    version is false (e.g. empty string), it will not be offered.
 
 BUGS AND LIMITATIONS
     This module is under ten lines of code. It is likely provably correct.
@@ -35,7 +48,20 @@ BUGS AND LIMITATIONS
     "rct+perlbug@thompsonclan.org".
 
 SEE ALSO
-    *   Related::Module - How it is related
+    *   Dist::Zilla
+
+INSTALLATION
+    See perlmodinstall for information and options on installing Perl
+    modules.
+
+AUTHOR
+    Ryan C. Thompson <rct@thompsonclan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2010 by Ryan C. Thompson.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
 DISCLAIMER OF WARRANTY
     BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
@@ -58,13 +84,4 @@ DISCLAIMER OF WARRANTY
     FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
     SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
     DAMAGES.
-
-AUTHOR
-    Ryan C. Thompson <rct@thompsonclan.org>
-
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2010 by Ryan C. Thompson.
-
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
 

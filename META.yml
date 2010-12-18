@@ -1,5 +1,5 @@
 ---
-abstract: 'Specify version number manually.'
+abstract: 'Specify version number manually, using a plugin'
 author:
   - 'Ryan C. Thompson <rct@thompsonclan.org>'
 build_requires:
@@ -9,6 +9,7 @@ build_requires:
   File::Temp: 0
   Scalar::Util: 0
   Test::More: 0.94
+  perl: 5.004
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
@@ -23,6 +24,9 @@ requires:
   Moose: 0
   MooseX::Has::Sugar: 0
   MooseX::Types::Moose: 0
-  perl: v5.10
+  perl: 5.008
   utf8: 0
-version: 0.103440
+resources:
+  homepage: http://github.com/DarwinAwardWinner/Dist-Zilla-Plugin-StaticVersion/tree
+  repository: git://github.com/DarwinAwardWinner/Dist-Zilla-Plugin-StaticVersion.git
+version: 0.103521
